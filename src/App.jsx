@@ -1,41 +1,29 @@
 import { Canvas } from '@react-three/fiber'
 import './App.css'
 import TestWorld from './scenes/testWorld';
-import { Suspense, useMemo } from 'react';
+import { Suspense } from 'react';
 import { Physics } from '@react-three/rapier';
 import { KeyboardControls } from '@react-three/drei';
 
 
-export const Controls = {
-  forward: "forward",
-  back: "back",
-  left: "left",
-  right: "right",
-  jump: "jump",
-};
+const keyboardMap = [
+  { name: "forward", keys: ["ArrowUp", "KeyW"] },
+  { name: "backward", keys: ["ArrowDown", "KeyS"] },
+  { name: "left", keys: ["ArrowLeft", "KeyA"] },
+  { name: "right", keys: ["ArrowRight", "KeyD"] },
+  { name: "run", keys: ["Shift"] },
+
+];
 
 
 
 export default function App() {
-  const map = useMemo(
-    () => [
-      { name: Controls.forward, keys: ["ArrowUp", "KeyW"] },
-      { name: Controls.back, keys: ["ArrowDown", "KeyS"] },
-      { name: Controls.left, keys: ["ArrowLeft", "KeyA"] },
-      { name: Controls.right, keys: ["ArrowRight", "KeyD"] },
-      { name: Controls.jump, keys: ["Space"] },
-    ],
-    []
-  );
 
   return (
-    <KeyboardControls map={map}>
+    <KeyboardControls map={keyboardMap}>
       <Canvas>
-        <Suspense>
-          <Physics debug>
-            <TestWorld />
-          </Physics>
-        </Suspense>
+        {/* <color attach="background" args={["blue"]}></color> */}
+        <TestWorld />
       </Canvas>
     </KeyboardControls>
   )
