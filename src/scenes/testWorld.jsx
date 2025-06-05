@@ -1,4 +1,4 @@
-import { Physics, RigidBody } from "@react-three/rapier"
+import { CapsuleCollider, Physics, RigidBody } from "@react-three/rapier"
 import Character from "../character"
 import { Box, useKeyboardControls } from "@react-three/drei"
 import { Suspense, useRef, useState } from "react"
@@ -9,7 +9,7 @@ export default function TestWorld() {
     const jump = () => {
 
         if (isOnFloor.current) {
-            cube.current.applyImpulse({ x: 0, y: 5, z: 0 });
+            cube.current.applyImpulse({ x: 0, y: 10, z: 0 });
             isOnFloor.current = false;
         }
     };
@@ -66,7 +66,7 @@ export default function TestWorld() {
             <directionalLight position={[-10, 10, 0]} intensity={0.4} />
             <RigidBody
                 ref={cube}
-
+                colliders={false}
                 onCollisionEnter={({ other }) => {
                     if (other.rigidBodyObject.name === "floor") {
                         isOnFloor.current = true;
@@ -80,7 +80,12 @@ export default function TestWorld() {
                         console.log("false")
                     }
                 }}
-            >
+                // position={[0,,0]}
+            >   
+                <CapsuleCollider
+                    args={[0.8,1]}
+                    position={[0,4,0]}
+                />
                 <Character
                     onClick={() => setStart(true)}
                 />
