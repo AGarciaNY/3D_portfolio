@@ -1,7 +1,7 @@
 import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { CapsuleCollider, RigidBody } from "@react-three/rapier";
-import { useControls } from "leva";
+import { Leva, useControls } from "leva";
 import { useEffect, useRef, useState } from "react";
 import { MathUtils, Vector3 } from "three";
 import { degToRad } from "three/src/math/MathUtils.js";
@@ -28,14 +28,14 @@ const lerpAngle = (start, end, t) => {
   return normalizeAngle(start + (end - start) * t);
 };
 
-export const PlayerController = () => {
+export const PlayerController = ({canPlayerMove = true}) => {
   const { WALK_SPEED, RUN_SPEED, ROTATION_SPEED } = useControls(
     "Character Control",
     {
-      WALK_SPEED: { value: 0.8, min: 0.1, max: 4, step: 0.1 },
-      RUN_SPEED: { value: 1.6, min: 0.2, max: 12, step: 0.1 },
+      WALK_SPEED: { value: 3, min: 0.1, max: 4, step: 0.1 },
+      RUN_SPEED: { value: 6, min: 0.2, max: 12, step: 0.1 },
       ROTATION_SPEED: {
-        value: degToRad(0.5),
+        value: degToRad(2),
         min: degToRad(0.1),
         max: degToRad(5),
         step: degToRad(0.1),
@@ -58,28 +58,8 @@ export const PlayerController = () => {
   const [, get] = useKeyboardControls();
   const isClicking = useRef(false);
 
-  useEffect(() => {
-    const onMouseDown = (e) => {
-      isClicking.current = true;
-    };
-    const onMouseUp = (e) => {
-      isClicking.current = false;
-    };
-    document.addEventListener("mousedown", onMouseDown);
-    document.addEventListener("mouseup", onMouseUp);
-    // touch
-    document.addEventListener("touchstart", onMouseDown);
-    document.addEventListener("touchend", onMouseUp);
-    return () => {
-      document.removeEventListener("mousedown", onMouseDown);
-      document.removeEventListener("mouseup", onMouseUp);
-      document.removeEventListener("touchstart", onMouseDown);
-      document.removeEventListener("touchend", onMouseUp);
-    };
-  }, []);
-
   useFrame(({ camera, mouse }) => {
-    if (rb.current) {
+    if (rb.current && canPlayerMove) {
       const vel = rb.current.linvel();
 
       const movement = {
@@ -163,6 +143,7 @@ export const PlayerController = () => {
 
   return (
     <RigidBody colliders={false} lockRotations ref={rb} position={[0,1,0]}>
+      <Leva hidden={true}/>
       <group ref={container}>
         <group ref={cameraTarget} position-z={1.5} />
         <group ref={cameraPosition} position-y={4} position-z={-4} />
@@ -170,7 +151,7 @@ export const PlayerController = () => {
           <Character animation={animation} />
         </group>
       </group>
-      <CapsuleCollider args={[0.5, 1]} />
+      <CapsuleCollider args={[0.5, 1]} position={[0,1,0]}/>
     </RigidBody>
   );
 };
