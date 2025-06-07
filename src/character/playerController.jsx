@@ -28,7 +28,7 @@ const lerpAngle = (start, end, t) => {
   return normalizeAngle(start + (end - start) * t);
 };
 
-export const PlayerController = ({canPlayerMove = true}) => {
+export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = true}) => {
   const { WALK_SPEED, RUN_SPEED, ROTATION_SPEED } = useControls(
     "Character Control",
     {
@@ -50,6 +50,7 @@ export const PlayerController = ({canPlayerMove = true}) => {
 
   const characterRotationTarget = useRef(0);
   const rotationTarget = useRef(0);
+  
   const cameraTarget = useRef();
   const cameraPosition = useRef();
   const cameraWorldPosition = useRef(new Vector3());
@@ -58,8 +59,9 @@ export const PlayerController = ({canPlayerMove = true}) => {
   const [, get] = useKeyboardControls();
   const isClicking = useRef(false);
 
+  
   useFrame(({ camera, mouse }) => {
-    if (rb.current && canPlayerMove) {
+    if (rb.current && canPlayerMove && canPlayerCameraMove) {
       const vel = rb.current.linvel();
 
       const movement = {
@@ -114,6 +116,7 @@ export const PlayerController = ({canPlayerMove = true}) => {
       } else {
         setAnimation("idle");
       }
+
       character.current.rotation.y = lerpAngle(
         character.current.rotation.y,
         characterRotationTarget.current,
@@ -121,29 +124,30 @@ export const PlayerController = ({canPlayerMove = true}) => {
       );
 
       rb.current.setLinvel(vel, true);
-    }
 
-    // CAMERA
-    container.current.rotation.y = MathUtils.lerp(
-      container.current.rotation.y,
-      rotationTarget.current,
-      0.1
-    );
 
-    cameraPosition.current.getWorldPosition(cameraWorldPosition.current);
-    camera.position.lerp(cameraWorldPosition.current, 0.1);
+      // CAMERA
+      container.current.rotation.y = MathUtils.lerp(
+        container.current.rotation.y,
+        rotationTarget.current,
+        0.1
+      );
 
-    if (cameraTarget.current) {
-      cameraTarget.current.getWorldPosition(cameraLookAtWorldPosition.current);
-      cameraLookAt.current.lerp(cameraLookAtWorldPosition.current, 0.1);
+      cameraPosition.current.getWorldPosition(cameraWorldPosition.current);
+      camera.position.lerp(cameraWorldPosition.current, 0.1);
 
-      camera.lookAt(cameraLookAt.current);
+      if (cameraTarget.current) {
+        cameraTarget.current.getWorldPosition(cameraLookAtWorldPosition.current);
+        cameraLookAt.current.lerp(cameraLookAtWorldPosition.current, 0.1);
+
+        camera.lookAt(cameraLookAt.current);
+      }
     }
   });
 
   return (
-    <RigidBody colliders={false} lockRotations ref={rb} position={[0,1,0]}>
-      <Leva hidden={true}/>
+    <RigidBody colliders={false} lockRotations ref={rb} position={[0, 1, 0]}>
+      <Leva hidden={true} />
       <group ref={container}>
         <group ref={cameraTarget} position-z={1.5} />
         <group ref={cameraPosition} position-y={4} position-z={-4} />
@@ -151,7 +155,7 @@ export const PlayerController = ({canPlayerMove = true}) => {
           <Character animation={animation} />
         </group>
       </group>
-      <CapsuleCollider args={[0.5, 1]} position={[0,1,0]}/>
+      <CapsuleCollider args={[0.5, 1]} position={[0, 1, 0]} />
     </RigidBody>
   );
 };

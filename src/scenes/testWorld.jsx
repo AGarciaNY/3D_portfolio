@@ -1,14 +1,19 @@
 import { BallCollider, CapsuleCollider, Physics, RigidBody } from "@react-three/rapier"
-import { Box, OrthographicCamera, Text } from "@react-three/drei"
+import { Box, OrthographicCamera, Text, useKeyboardControls } from "@react-three/drei"
 import { PlayerController } from "../character/playerController"
 import { useRef, useState } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import * as THREE from 'three';
 import { Spaceship } from "../items/spaceship/index"
+import { Podium } from "../items/podium/index"
+
 
 export default function TestWorld({ changeScene }) {
+    const dummyDunction=()=>{console.log("dummy function")}
     var meshRef = useRef()
-    const EPressRef = useRef()
+    
+    
+    const [interactFunction,setInteractFunction] = useState({ myfunction: dummyDunction})
     const [ePressVisible,setEPressVisible] = useState(false)
     const { camera } = useThree();
 
@@ -17,12 +22,12 @@ export default function TestWorld({ changeScene }) {
     const dir = new THREE.Vector3();
     const scene = useThree(state => state.scene);
     const [canPlayerMove, setCanPlayerMove] = useState(true)
+    const [canPlayerCameraMove, setCanPlayerCameraMove] = useState(true)
 
+
+    const [, get] = useKeyboardControls();
 
     useFrame(() => {
-        if (EPressRef.current) {
-            EPressRef.current.lookAt(camera.position);
-        }
 
         if (!meshRef.current) return;
         raycaster.set(meshRef.current.getWorldPosition(pos), meshRef.current.getWorldDirection(dir));
@@ -30,13 +35,12 @@ export default function TestWorld({ changeScene }) {
 
         if (intersects.length > 0) {
             changeScene("spaceship")
+            
+        }
+        if(get().interact){
+            interactFunction.myfunction()
         }
     });
-    const showE = () => {
-        setEPressVisible(!ePressVisible)
-        
-        console.log("here")
-    }
 
     return (
         <>
@@ -59,28 +63,16 @@ export default function TestWorld({ changeScene }) {
 
             <Physics debug>
 
-                <PlayerController canPlayerMove={canPlayerMove} />
+                <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove}/>
 
                 <Spaceship spaceShipRef={meshRef} />
 
 
-
-
-                <RigidBody type="fixed" position={[-2, 2, -2]} colliders={false} rotation={[0, Math.PI / 2, 0]}>
-                    <BallCollider args={[2, 2]} sensor={true} colliders={true} onIntersectionEnter={showE} onIntersectionExit={showE}/>
-                    
-                     <Box args={[1, 1.2, 0.1]} position={[0, 0, 1]} ref={EPressRef} visible={ePressVisible}>
-                        <Text
-                        color="black"
-                        fontSize={1}
-                        position={[0, 0.05, 1.0]}
-                        
-                    >
-                        E
-                    </Text>
-                     </Box>
-                    <Box args={[4, 4, 0.1]} position={[0, 0, -2]} />
+                <RigidBody type="fixed" position={[2, 2, -2]} colliders={false} rotation={[0, 0, 0]}>
+                    <Podium setInteractFunction={setInteractFunction} setCanPlayerMove={setCanPlayerMove} setCanPlayerCameraMove={setCanPlayerCameraMove}/>
                 </RigidBody>
+
+
 
                 <RigidBody type="fixed" name="floor">
                     <Box position={[0, 0, 0]} args={[10, 1, 10]} >
