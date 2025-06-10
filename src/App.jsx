@@ -10,6 +10,7 @@ import { AboutMe } from './scenes/about';
 import { WorkEXP } from './scenes/workEXP';
 import { Projects } from './scenes/projects';
 import { ArtWork } from './scenes/artWork';
+import { Background } from './items/background';
 
 
 const keyboardMap = [
@@ -25,11 +26,13 @@ const keyboardMap = [
 
 export default function App() {
 
-  const [currentScene, changeScene] = useState("testWorld")
+  const [currentScene, changeScene] = useState("spaceship")
 
   return (
     <KeyboardControls map={keyboardMap}>
       <Canvas>
+        <color attach="background" args={["#178f43"]} />
+
         {/* <color attach="background" args={["blue"]}></color> */}
         {currentScene === "testWorld" && <TestWorld changeScene={changeScene}/>}
         {currentScene === "spaceship" && <InSideSpaceship changeScene={changeScene}/>}

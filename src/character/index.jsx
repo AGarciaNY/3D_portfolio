@@ -1,7 +1,6 @@
-import { Box, PerspectiveCamera } from "@react-three/drei"
-import { useRef } from "react"
-import { useFrame } from "@react-three/fiber"
+import { Box} from "@react-three/drei"
 
-export default function Character() {
-    return <Box args={[1, 1, 1]} />
+import { MeModel } from "../../public/Me"
+export default function Character({animation}) {
+    return <MeModel rotation={[0,Math.PI,0]} animation={animation}/>
 }

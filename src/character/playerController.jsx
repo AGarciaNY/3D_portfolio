@@ -109,12 +109,12 @@ export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = t
           Math.cos(rotationTarget.current + characterRotationTarget.current) *
           speed;
         if (speed === RUN_SPEED) {
-          setAnimation("run");
+          setAnimation("running");
         } else {
-          setAnimation("walk");
+          setAnimation("walking");
         }
       } else {
-        setAnimation("idle");
+        setAnimation("at_rest");
       }
 
       character.current.rotation.y = lerpAngle(
@@ -152,7 +152,7 @@ export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = t
         <group ref={cameraTarget} position-z={8} />
         <group ref={cameraPosition} position-y={4} position-z={-4} />
         <group ref={character} position={[0,.5,0]}>
-          <Character animation={animation} />
+          <Character animation={animation}/>
         </group>
       </group>
       <CapsuleCollider args={[0.5, .5]} position={[0, 1, 0]} />
