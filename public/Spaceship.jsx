@@ -14,7 +14,7 @@ export function SpaceshipModel({animation, ...props}) {
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
   const { nodes, materials } = useGraph(clone)
   const { actions , names} = useAnimations(animations, group)
-  console.log(names)
+
   useEffect(() => {
     actions[animation]?.reset().fadeIn(0.24).play();
     return () => actions?.[animation]?.fadeOut(0.24);
