@@ -3,7 +3,7 @@ import { Physics, RigidBody } from "@react-three/rapier"
 import { PlayerController } from "../character/playerController"
 import { Spaceship } from "../items/spaceship"
 
-export const AboutMe = ({changeScene}) => {
+export const ArtWork = ({changeScene}) => {
     return (
         <>
             <Physics debug>
@@ -23,7 +23,7 @@ export const AboutMe = ({changeScene}) => {
 
                 <RigidBody type="fixed" name="floor">
                     <Box position={[0, 0, 0]} args={[50, 1, 50]} >
-                        <meshStandardMaterial color={"green"} roughness={3} />
+                        <meshStandardMaterial color={"gray"} roughness={3} />
                     </Box>
                 </RigidBody>
             </Physics>

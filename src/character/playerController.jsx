@@ -35,7 +35,7 @@ export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = t
       WALK_SPEED: { value: 3, min: 0.1, max: 4, step: 0.1 },
       RUN_SPEED: { value: 6, min: 0.2, max: 12, step: 0.1 },
       ROTATION_SPEED: {
-        value: degToRad(2),
+        value: degToRad(3),
         min: degToRad(0.1),
         max: degToRad(5),
         step: degToRad(0.1),
@@ -149,13 +149,13 @@ export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = t
     <RigidBody colliders={false} lockRotations ref={rb} position={[0, 1, 0]}>
       <Leva hidden={true} />
       <group ref={container}>
-        <group ref={cameraTarget} position-z={1.5} />
+        <group ref={cameraTarget} position-z={8} />
         <group ref={cameraPosition} position-y={4} position-z={-4} />
-        <group ref={character}>
+        <group ref={character} position={[0,.5,0]}>
           <Character animation={animation} />
         </group>
       </group>
-      <CapsuleCollider args={[0.5, 1]} position={[0, 1, 0]} />
+      <CapsuleCollider args={[0.5, .5]} position={[0, 1, 0]} />
     </RigidBody>
   );
 };

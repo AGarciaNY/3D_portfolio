@@ -8,6 +8,8 @@ import { InSideSpaceship } from './scenes/spaceship';
 import { TravelScece } from './scenes/travelScene';
 import { AboutMe } from './scenes/about';
 import { WorkEXP } from './scenes/workEXP';
+import { Projects } from './scenes/projects';
+import { ArtWork } from './scenes/artWork';
 
 
 const keyboardMap = [
@@ -34,6 +36,8 @@ export default function App() {
         {currentScene === "travel" && <TravelScece changeScene={changeScene}/>}
         {currentScene === "about" && <AboutMe changeScene={changeScene}/>}
         {currentScene === "workEXP" && <WorkEXP changeScene={changeScene}/>}
+        {currentScene === "art work" && <ArtWork changeScene={changeScene}/>}
+        {currentScene === "projects" && <Projects changeScene={changeScene}/>}
         
       </Canvas>
     </KeyboardControls>

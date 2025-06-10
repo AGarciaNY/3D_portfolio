@@ -1,6 +1,7 @@
 import { Box, OrthographicCamera } from "@react-three/drei"
 import { useThree } from "@react-three/fiber";
 import { CubeTextureLoader } from "three";
+import { SpaceshipModel } from "../../public/Spaceship";
 
 export const TravelScece = () => {
     const SkyBox = () => {

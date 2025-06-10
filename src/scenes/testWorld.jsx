@@ -9,35 +9,24 @@ import { Podium } from "../items/podium/index"
 
 
 export default function TestWorld({ changeScene }) {
-    const dummyDunction=()=>{console.log("dummy function")}
-    var meshRef = useRef()
-    
-    
-    const [interactFunction,setInteractFunction] = useState({ myfunction: dummyDunction})
-    const [ePressVisible,setEPressVisible] = useState(false)
-    const { camera } = useThree();
+    const dummyDunction = () => { console.log("dummy function") }
+    const [interactFunction, setInteractFunction] = useState({ myfunction: dummyDunction })
 
-    const raycaster = new THREE.Raycaster();
-    const pos = new THREE.Vector3();
-    const dir = new THREE.Vector3();
-    const scene = useThree(state => state.scene);
     const [canPlayerMove, setCanPlayerMove] = useState(true)
     const [canPlayerCameraMove, setCanPlayerCameraMove] = useState(true)
 
 
     const [, get] = useKeyboardControls();
 
+
+    const CurrentSpaceShip = ({ animationIndex }) => {
+
+        return <Spaceship changeScene={changeScene} position={[4, 2, 4]} />
+    }
     useFrame(() => {
 
-        if (!meshRef.current) return;
-        raycaster.set(meshRef.current.getWorldPosition(pos), meshRef.current.getWorldDirection(dir));
-        const intersects = raycaster.intersectObjects(scene.children);
 
-        if (intersects.length > 0) {
-            changeScene("spaceship")
-            
-        }
-        if(get().interact){
+        if (get().interact) {
             interactFunction.myfunction()
         }
     });
@@ -63,19 +52,25 @@ export default function TestWorld({ changeScene }) {
 
             <Physics debug>
 
-                <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove}/>
+                <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove} />
+                {/* <RigidBody type="fixed" colliders={false} > */}
+                <Spaceship changeScene={changeScene} position={[9, 2, 6]} />
+                {/* </RigidBody> */}
+                {/* <RigidBody type="fixed" position={[8, 2, -6]} rotation={[-Math.PI / 8, 0, 0]}>
+                    <Box args={[2, 1, 8]}>
+                        <meshStandardMaterial color="red" />
+                    </Box>
+                </RigidBody> */}
 
-                <Spaceship spaceShipRef={meshRef} />
 
-
-                <RigidBody type="fixed" position={[2, 2, -2]} colliders={false} rotation={[0, 0, 0]}>
-                    <Podium setInteractFunction={setInteractFunction} setCanPlayerMove={setCanPlayerMove} setCanPlayerCameraMove={setCanPlayerCameraMove}/>
+                <RigidBody type="fixed" position={[2, 2, -15]} colliders={false} rotation={[0, Math.PI, 0]}>
+                    <Podium setInteractFunction={setInteractFunction} setCanPlayerMove={setCanPlayerMove} setCanPlayerCameraMove={setCanPlayerCameraMove} />
                 </RigidBody>
 
 
 
                 <RigidBody type="fixed" name="floor">
-                    <Box position={[0, 0, 0]} args={[10, 1, 10]} >
+                    <Box position={[0, 0, 0]} args={[50, 1, 50]} >
                         <meshStandardMaterial color={"#7732a8"} roughness={3} />
                     </Box>
                 </RigidBody>
