@@ -25,7 +25,7 @@ export const InSideSpaceship = ({ changeScene }) => {
                     bottom={-20}
                 /> */}
             </directionalLight>
-            <Physics debug>
+            <Physics>
                 <group position={[0,2,0]}>
                     <Station/>
                 </group>
