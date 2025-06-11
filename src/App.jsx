@@ -31,12 +31,13 @@ export default function App() {
   return (
     <KeyboardControls map={keyboardMap}>
       <Canvas>
-        <color attach="background" args={["#178f43"]} />
+        
 
         {/* <color attach="background" args={["blue"]}></color> */}
         {currentScene === "testWorld" && <TestWorld changeScene={changeScene}/>}
         {currentScene === "spaceship" && <InSideSpaceship changeScene={changeScene}/>}
         {currentScene === "travel" && <TravelScece changeScene={changeScene}/>}
+
         {currentScene === "about" && <AboutMe changeScene={changeScene}/>}
         {currentScene === "workEXP" && <WorkEXP changeScene={changeScene}/>}
         {currentScene === "art work" && <ArtWork changeScene={changeScene}/>}

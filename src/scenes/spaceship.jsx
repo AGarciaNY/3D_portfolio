@@ -1,14 +1,36 @@
-import { Box, Text } from "@react-three/drei"
+import { Box, Cylinder, Sphere, Text } from "@react-three/drei"
 import { Physics, RigidBody } from "@react-three/rapier"
 import { PlayerController } from "../character/playerController"
 import { useState } from "react"
 import { Station } from "../items/space_station"
-
+import { InsideSpaceshipModel } from "../../public/Insidespaceship"
+import { useThree } from "@react-three/fiber"
+import { CubeTextureLoader } from "three"
 // CircleGeometry
 export const InSideSpaceship = ({ changeScene }) => {
+    const SkyBox = () => {
+
+            const { scene } = useThree();
+            const loader = new CubeTextureLoader();
+            // The CubeTextureLoader load method takes an array of urls representing all 6 sides of the cube.
+            const texture = loader.load([
+                "/1.jpg",
+                "/1.jpg",
+                "/1.jpg",
+                "/1.jpg",
+                "/1.jpg",
+                "/1.jpg",
+            ]);
+    
+            // Set the scene background property to the resulting texture.
+            scene.background = texture;
+            return null;
+        }
+
     const [destination, setDestination] = useState("")
     return (
         <>
+            <color attach="background" args={["black"]} />
             <ambientLight intensity={0.5} />
             <directionalLight
                 intensity={0.65}
@@ -24,70 +46,51 @@ export const InSideSpaceship = ({ changeScene }) => {
                     top={10}
                     bottom={-20}
                 /> */}
+                <SkyBox/>
             </directionalLight>
+
             <Physics>
-                <group position={[0,2,0]}>
-                    <Station/>
+                <group position={[0, 4, 10]} rotation={[0, Math.PI, 0]}>
+                    <Station setDestination={setDestination} />
                 </group>
-                <PlayerController />
-                <group position={[0, 2, -10]} rotation={[0, Math.PI, 0]}>
-
-                    <Box args={[4, 5, 0.1]}>
-                        <meshBasicMaterial color={"#000c78"} />
-                    </Box>
-                    <mesh onClick={() => { setDestination("can't go here") }} position={[0, -0.5, 1]}>
-                        <sphereGeometry args={[.4]} />
-                        <meshBasicMaterial color={"yellow"} />
-                    </mesh>
-
-                    <mesh onClick={() => { setDestination("testWorld") }} position={[-1, .8, 1]}>
-                        <sphereGeometry args={[.2]} />
-                        <meshBasicMaterial color={"black"} />
-                    </mesh>
-                    <mesh onClick={() => { setDestination("about") }} position={[0, 1, 1]}>
-                        <sphereGeometry args={[.2]} />
-                        <meshBasicMaterial color={"green"} />
-                    </mesh>
-                    <mesh onClick={() => { setDestination("workEXP") }} position={[1, 0, 1]}>
-                        <sphereGeometry args={[.2]} />
-                        <meshBasicMaterial color={"#db7a02"} />
-                    </mesh>
-                    <mesh onClick={() => { setDestination("art work") }} position={[-1, -1, 1]}>
-                        <sphereGeometry args={[.2]} />
-                        <meshBasicMaterial color={"gray"} />
-                    </mesh>
-                    <mesh onClick={() => { setDestination("projects") }} position={[0, -1.5, 1]}>
-                        <sphereGeometry args={[.2]} />
-                        <meshBasicMaterial color={"#2994f2"} />
-                    </mesh>
+                <PlayerController position={[0, 4, 14]} />
 
 
-                    <mesh onClick={() => { changeScene(destination) }} position={[2, 0, 1]}>
-                        <Box arg={[1, 0.5]} />
-                        <meshBasicMaterial color={0xff0000} />
+                <group position={[0, 5, 11]} rotation={[0, 0, 0]}>
+
+                    <mesh onClick={() => { changeScene(destination) }} position={[2.52,-1,-.18]}>
+                        <Sphere args={[.2, 10]}>
+
+                            <meshBasicMaterial color={"red"} />
+                        </Sphere>
                     </mesh>
 
                     <Text
                         color="white"
                         fontSize={.2}
-                        position={[0, 2, 1]}
+                        position={[1, -.9, 0]}
+                        rotation={[-Math.PI / 3,0,  Math.PI / 50]}
+                        maxWidth={2.5}
                     >
-                        Hello, World!
+                        Click on a planet and the red button to get there.
                     </Text>
                     <Text
                         color="white"
                         fontSize={.2}
-                        position={[0, -2, 1]}
+                        position={[1, -1.1, 0.5]}
+                        rotation={[-Math.PI / 3,0,  Math.PI / .09989]}
+
                     >
                         Destination: {destination}
                     </Text>
                 </group>
 
 
-                <RigidBody type="fixed" name="wfloor">
-                    <Box position={[0, 0, 0]} args={[10, 1, 10]} >
+                <RigidBody type="fixed" colliders="trimesh">
+                    {/* <Box position={[0, 0, 0]} args={[10, 1, 10]} >
                         <meshBasicMaterial color={"green"} roughness={3} />
-                    </Box>
+                    </Box> */}
+                    <InsideSpaceshipModel />
                 </RigidBody>
             </Physics>
 

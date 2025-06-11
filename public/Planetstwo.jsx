@@ -6,12 +6,12 @@ Command: npx gltfjsx@6.5.3 planetstwo.glb
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function Planet2Model(props) {
+export function Planet2Model({setDestination,...props}) {
   const { nodes, materials } = useGLTF('/planetstwo.glb')
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Sphere002.geometry} material={materials.workExp} position={[1.5, 0, 0]} scale={2.581}
-        onClick={()=>{console.log("Two")}}
+        onClick={()=>{setDestination("workEXP")}}
       />
       <mesh geometry={nodes.BézierCircle.geometry} colliders={false} material={materials['Material.002']} />
     </group>

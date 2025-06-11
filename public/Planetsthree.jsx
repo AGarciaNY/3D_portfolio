@@ -6,12 +6,12 @@ Command: npx gltfjsx@6.5.3 planetsthree.glb
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function Planet3Model(props) {
+export function Planet3Model({setDestination,...props}) {
   const { nodes, materials } = useGLTF('/planetsthree.glb')
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Sphere001.geometry} material={materials.green} position={[2.334, 0, 0]} scale={3.478}
-        onClick={() => { console.log("Three") }}
+        onClick={() => { setDestination("art work") }}
       />
       <mesh geometry={nodes.BézierCircle001.geometry} colliders={false} material={materials['Material.001']} />
     </group>

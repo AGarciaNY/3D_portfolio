@@ -28,7 +28,7 @@ const lerpAngle = (start, end, t) => {
   return normalizeAngle(start + (end - start) * t);
 };
 
-export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = true}) => {
+export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = true, position = [0,0,0]}) => {
   const { WALK_SPEED, RUN_SPEED, ROTATION_SPEED } = useControls(
     "Character Control",
     {
@@ -146,7 +146,7 @@ export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = t
   });
 
   return (
-    <RigidBody colliders={false} lockRotations ref={rb} position={[0, 1, 0]}>
+    <RigidBody colliders={false} lockRotations ref={rb} position={position}>
       <Leva hidden={true} />
       <group ref={container}>
         <group ref={cameraTarget} position-z={8} />
