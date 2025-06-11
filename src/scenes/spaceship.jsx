@@ -3,7 +3,7 @@ import { Physics, RigidBody } from "@react-three/rapier"
 import { PlayerController } from "../character/playerController"
 import { useState } from "react"
 import { Station } from "../items/space_station"
-import { InsideSpaceshipModel } from "../../public/Insidespaceship"
+import { InsideSpaceshipModel } from "../../public/InsideSpaceship"
 import { useThree } from "@react-three/fiber"
 import { CubeTextureLoader } from "three"
 // CircleGeometry
