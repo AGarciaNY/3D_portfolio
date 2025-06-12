@@ -20,15 +20,19 @@ export const Projects = ({ changeScene }) => {
         }
     });
 
-    
+
     return (
         <>
 
             <Physics debug>
-                <Spaceship changeScene={changeScene} position={[4, 1, 4]} />
-                <group position={[1, 0.5, -11]}>
-                    <ArcadeFunction setInteractFunction={setInteractFunction} setCanPlayerMove={setCanPlayerMove} setCanPlayerCameraMove={setCanPlayerCameraMove} />
-
+                <Spaceship changeScene={changeScene} position={[0, 2, 20]} />
+                <group position={[1, 0.5, -11]} rotation={[0,Math.PI,0]}>
+                    <ArcadeFunction
+                        setInteractFunction={setInteractFunction}
+                        setCanPlayerMove={setCanPlayerMove}
+                        setCanPlayerCameraMove={setCanPlayerCameraMove}
+                        // img={}
+                    />
                 </group>
                 <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove} />
                 <ambientLight intensity={0.5} />

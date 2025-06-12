@@ -1,12 +1,12 @@
-import { Box, Image, Text } from "@react-three/drei"
+import { Box, Cylinder, Image, Sphere, Text } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber";
 import { BallCollider } from "@react-three/rapier"
 import { useRef, useState } from "react";
 import { TextureLoader, Vector3 } from "three";
 import { Arcade } from "../../../public/Arcade";
 import { useLoader } from '@react-three/fiber';
-import vite from "../../assets/react.svg"
-
+import TWITTFBOU from '../../assets/TWITTFBOU.png'
+// src/items/arcade/Arcade_Function.jsx
 export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPlayerCameraMove }) => {
     const { camera } = useThree();
     const EPressRef = useRef()
@@ -21,7 +21,7 @@ export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPl
     const cameraLookAtWorldPosition = useRef(new Vector3());
     const cameraLookAt = useRef(new Vector3());
 
-    const texture = useLoader(TextureLoader, vite);
+    const texture = useLoader(TextureLoader, TWITTFBOU);
 
     useFrame(() => {
         if (EPressRef.current) {
@@ -62,7 +62,7 @@ export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPl
         <group>
             <BallCollider position={[0, 0, -1.5]} args={[1.5, 1]} sensor={true} colliders={true} onIntersectionEnter={() => { PodiumE(interactionFunction) }} onIntersectionExit={PodiumE} />
 
-            
+
             <Box args={[1.2, .5, 0.1]} position={[0, 0, -1.5]} ref={EPressRef} visible={ePressVisible}>
                 <meshStandardMaterial color={"black"} roughness={3} />
                 <Text
@@ -85,7 +85,7 @@ export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPl
                         rotation={[0, Math.PI, 0]}
                         color="white"
                         fontSize={.1}
-                        position={[-.4, 2.7, -.2]}
+                        position={[-.8, 2.75, -.11]}
                         onClick={() => {
                             setCanPlayerMove(true)
                             setCanPlayerCameraMove(true)
@@ -94,7 +94,20 @@ export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPl
                         Exit
                     </Text>
 
-                    <Image rotation={[0, Math.PI, 0]} position={[ 0,2.3,-.1]} url={vite} scale={.2}></Image>
+                    <Image scale={[2, 1.2]} rotation={[0, Math.PI, 0]} position={[0, 2.2, -.1]} url={TWITTFBOU} ></Image>
+                    {/* <Sphere args={[.2,7]} position={[-.8,1.8,0]}/> */}
+                    <Cylinder args={[.1, .1, .2]} rotation={[Math.PI / 2, 0, 0]} position={[-.8, 1.9, -0.01]}>
+                        <meshBasicMaterial color="red"/>
+                        <Text
+                            rotation={[-Math.PI / 2, Math.PI, 0]}
+                            color="white"
+                            fontSize={.07}
+                            position={[.07, -.2, -0.05]}
+                            onClick={()=>window.open("https://jalvarez.itch.io/godot-44-web-build-test ", "_blank")}
+                        >
+                            play
+                        </Text>
+                    </Cylinder>
                     {/* <mesh position={[-1,1,-1]}>
                         <Box args={[1,1,1]}/>
                         <meshBasicMaterial attach="material" map={texture} />

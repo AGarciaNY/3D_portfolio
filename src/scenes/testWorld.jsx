@@ -18,11 +18,6 @@ export default function TestWorld({ changeScene }) {
 
     const [, get] = useKeyboardControls();
 
-
-    const CurrentSpaceShip = ({ animationIndex }) => {
-
-        return <Spaceship changeScene={changeScene} position={[4, 2, 4]} />
-    }
     useFrame(() => {
 
 

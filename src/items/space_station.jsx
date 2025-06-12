@@ -18,16 +18,19 @@ export const Station = ({ setDestination }) => {
     const planetThree = useRef()
     const planetFour = useRef()
     // const planetFive = useRef()
-    const speed = useRef(1);
-    const speed1 = useRef(0.8);
-    const speed2 = useRef(0.7);
-    const speed3 = useRef(0.6);
+
+    const speed = useRef(.3);
+    const speed1 = useRef(0.2);
+    const speed2 = useRef(0.1);
+    const speed3 = useRef(0.1);
     // const speed4 = useRef(0.5);
+
     const sign1 = useRef()
     const sign2 = useRef()
     const sign3 = useRef()
     const sign4 = useRef()
     // const sign5 = useRef()
+    
     useFrame((_state, delta) => {
         if (sign1.current) {
             sign1.current.lookAt(camera.position);
@@ -40,7 +43,7 @@ export const Station = ({ setDestination }) => {
             const curRotation = quat(planetOne.current.rotation());
             const incrementRotation = new THREE.Quaternion().setFromAxisAngle(
                 new THREE.Vector3(0, 1, 0),
-                delta * speed1.current
+                delta * speed.current
             );
             curRotation.multiply(incrementRotation);
             planetOne.current.setNextKinematicRotation(curRotation);
