@@ -10,22 +10,22 @@ import { CubeTextureLoader } from "three"
 export const InSideSpaceship = ({ changeScene }) => {
     const SkyBox = () => {
 
-            const { scene } = useThree();
-            const loader = new CubeTextureLoader();
-            // The CubeTextureLoader load method takes an array of urls representing all 6 sides of the cube.
-            const texture = loader.load([
-                "/1.jpg",
-                "/1.jpg",
-                "/1.jpg",
-                "/1.jpg",
-                "/1.jpg",
-                "/1.jpg",
-            ]);
-    
-            // Set the scene background property to the resulting texture.
-            scene.background = texture;
-            return null;
-        }
+        const { scene } = useThree();
+        const loader = new CubeTextureLoader();
+        // The CubeTextureLoader load method takes an array of urls representing all 6 sides of the cube.
+        const texture = loader.load([
+            "/1.jpg",
+            "/1.jpg",
+            "/1.jpg",
+            "/1.jpg",
+            "/1.jpg",
+            "/1.jpg",
+        ]);
+
+        // Set the scene background property to the resulting texture.
+        scene.background = texture;
+        return null;
+    }
 
     const [destination, setDestination] = useState("")
     return (
@@ -46,7 +46,7 @@ export const InSideSpaceship = ({ changeScene }) => {
                     top={10}
                     bottom={-20}
                 /> */}
-                <SkyBox/>
+                <SkyBox />
             </directionalLight>
 
             <Physics>
@@ -58,7 +58,12 @@ export const InSideSpaceship = ({ changeScene }) => {
 
                 <group position={[0, 5, 11]} rotation={[0, 0, 0]}>
 
-                    <mesh onClick={() => { changeScene(destination) }} position={[2.52,-1,-.18]}>
+                    <mesh onClick={() => {
+                        if (destination !== "" && destination !== "Cant go here")
+                            changeScene(destination)
+                        }}
+                        position={[2.52, -1, -.18]}
+                    >
                         <Sphere args={[.2, 10]}>
 
                             <meshBasicMaterial color={"red"} />
@@ -69,7 +74,7 @@ export const InSideSpaceship = ({ changeScene }) => {
                         color="white"
                         fontSize={.2}
                         position={[1, -.9, 0]}
-                        rotation={[-Math.PI / 3,0,  Math.PI / 50]}
+                        rotation={[-Math.PI / 3, 0, Math.PI / 50]}
                         maxWidth={2.5}
                     >
                         Click on a planet and the red button to get there.
@@ -78,7 +83,7 @@ export const InSideSpaceship = ({ changeScene }) => {
                         color="white"
                         fontSize={.2}
                         position={[1, -1.1, 0.5]}
-                        rotation={[-Math.PI / 3,0,  Math.PI / .09989]}
+                        rotation={[-Math.PI / 3, 0, Math.PI / .09989]}
 
                     >
                         Destination: {destination}

@@ -30,7 +30,7 @@ export const Station = ({ setDestination }) => {
     const sign3 = useRef()
     const sign4 = useRef()
     // const sign5 = useRef()
-    
+
     useFrame((_state, delta) => {
         if (sign1.current) {
             sign1.current.lookAt(camera.position);
@@ -92,33 +92,42 @@ export const Station = ({ setDestination }) => {
 
         return (
             <group position={position} ref={refHere}>
-                <Box args={boxSize}></Box>
-                <Text fontSize={.2} color={"black"} position={[0, 0, .1]}>{name}</Text>
+                <mesh>
+                    <boxGeometry args={boxSize}>
+                    </boxGeometry>
+                    <meshStandardMaterial color="black" transparent opacity={0.5} />
+                </mesh>
+                <Text
+                    fontWeight={1000}
+                    fontSize={.2}
+                    color={"green"}
+                    position={[0, 0, .1]}
+                >{name}</Text>
             </group>
         )
     }
     return (
         <group position={[0, 2, 10]} rotation={[-Math.PI / 4, 0, 0]} scale={1.5}>
-            <Sphere args={[.5, 20]} position={[0, 1, 0]}>
+            <Sphere args={[.5, 20]} position={[0, 1, 0]} onClick={()=>{setDestination("Cant go here")}}>
                 <meshStandardMaterial color={"yellow"} roughness={3} />
             </Sphere>
 
             <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetOne} rotation={[0, Math.PI / 8, Math.PI / 20]}>
-                <Tag name={"About"} position={[1, .7, 0]} boxSize={[.7, .3, .01]} refHere={sign1} />
+                <Tag name={"About"} position={[1, .7, 0]} boxSize={[.8, .3, .01]} refHere={sign1} />
                 <Planet1Model setDestination={setDestination} />
             </RigidBody>
 
             <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetTwo} rotation={[0, -Math.PI / 2, Math.PI / 15]}>
-                <Tag name={"Work EXP"} position={[1.5, .7, 0]} boxSize={[1, .3, .01]} refHere={sign2} />
+                <Tag name={"Work EXP"} position={[1.5, .7, 0]} boxSize={[1.1, .3, .01]} refHere={sign2} />
                 <Planet2Model setDestination={setDestination} />
             </RigidBody>
 
             <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetThree} rotation={[Math.PI / 10, -Math.PI / 1.2, Math.PI / 10]}>
-                <Tag name={"Art Work"} position={[2.4, .7, 0]} boxSize={[.9, .3, .01]} refHere={sign3} />
+                <Tag name={"Art Work"} position={[2.4, .7, 0]} boxSize={[1, .3, .01]} refHere={sign3} />
                 <Planet3Model setDestination={setDestination} />
             </RigidBody>
             <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetFour} rotation={[0, Math.PI, Math.PI / 18]}>
-                <Tag name={"Projects"} position={[3.2, 1, 0]} boxSize={[.9, .3, .01]} refHere={sign4} />
+                <Tag name={"Projects"} position={[3.2, 1, 0]} boxSize={[1, .3, .01]} refHere={sign4} />
                 <Planet4Model setDestination={setDestination} />
             </RigidBody>
             {/* <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetFive} rotation={[0, -Math.PI / 7, Math.PI / 20]}>

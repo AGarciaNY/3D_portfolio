@@ -5,6 +5,7 @@ import { Spaceship } from "../items/spaceship"
 import { ArcadeFunction } from "../items/arcade/Arcade_Function"
 import { useState } from "react"
 import { useFrame } from "@react-three/fiber"
+import { ProjectMapModel } from "../../public/Projects"
 
 export const Projects = ({ changeScene }) => {
     const dummyDunction = () => { console.log("dummy function") }
@@ -26,7 +27,7 @@ export const Projects = ({ changeScene }) => {
 
             <Physics debug>
                 <Spaceship changeScene={changeScene} position={[0, 2, 20]} />
-                <group position={[1, 0.5, -11]} rotation={[0,Math.PI,0]}>
+                <group position={[-50, 1.5, -40]} rotation={[0,Math.PI,0]}>
                     <ArcadeFunction
                         setInteractFunction={setInteractFunction}
                         setCanPlayerMove={setCanPlayerMove}
@@ -45,11 +46,8 @@ export const Projects = ({ changeScene }) => {
                     shadow-bias={-0.00005}
                 />
 
-                d
-                <RigidBody type="fixed" name="floor">
-                    <Box position={[0, -0.5, 0]} args={[50, 0.5, 50]} >
-                        <meshBasicMaterial color={"#2994f2"} />a
-                    </Box>
+                <RigidBody type="fixed" name="floor" colliders="trimesh" scale={1.5} position={[-18,0.8,0]}>
+                    <ProjectMapModel />
                 </RigidBody>
             </Physics>
 

@@ -26,7 +26,7 @@ const keyboardMap = [
 
 export default function App() {
 
-  const [currentScene, changeScene] = useState("testWorld")
+  const [currentScene, changeScene] = useState("spaceship")
 
   return (
     <KeyboardControls map={keyboardMap}>
