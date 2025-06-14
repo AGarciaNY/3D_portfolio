@@ -5,10 +5,11 @@ import { useRef, useState } from "react";
 import { TextureLoader, Vector3 } from "three";
 import { Arcade } from "../../../public/Arcade";
 import { useLoader } from '@react-three/fiber';
-import TWITTFBOU from '../../assets/TWITTFBOU.png'
+
 import Github from '../../assets/Github.png'
 // src/items/arcade/Arcade_Function.jsx
-export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPlayerCameraMove }) => {
+
+export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPlayerCameraMove,image,githubLink,liveLink}) => {
     const { camera } = useThree();
     const EPressRef = useRef()
     const [ePressVisible, setEPressVisible] = useState(false)
@@ -22,7 +23,6 @@ export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPl
     const cameraLookAtWorldPosition = useRef(new Vector3());
     const cameraLookAt = useRef(new Vector3());
 
-    const texture = useLoader(TextureLoader, TWITTFBOU);
 
     useFrame(() => {
         if (EPressRef.current) {
@@ -95,7 +95,7 @@ export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPl
                         Exit
                     </Text>
 
-                    <Image scale={[2, 1.2]} rotation={[0, Math.PI, 0]} position={[0, 2.2, -.1]} url={TWITTFBOU} ></Image>
+                    <Image scale={[2, 1.2]} rotation={[0, Math.PI, 0]} position={[0, 2.2, -.1]} url={image} ></Image>
                     {/* <Sphere args={[.2,7]} position={[-.8,1.8,0]}/> */}
                     <Cylinder args={[.1, .1, .2]} rotation={[Math.PI / 2, 0, 0]} position={[-.8, 1.8, -0.01]}>
                         <meshBasicMaterial color="red" />
@@ -104,7 +104,7 @@ export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPl
                             color="white"
                             fontSize={.07}
                             position={[.07, -.2, -0.05]}
-                            onClick={() => window.open("https://jalvarez.itch.io/godot-44-web-build-test ", "_blank")}
+                            onClick={() => window.open(liveLink, "_blank")}
                         >
                             play
                         </Text>
@@ -113,14 +113,13 @@ export const ArcadeFunction = ({ setInteractFunction, setCanPlayerMove, setCanPl
                         <Cylinder args={[.1, .1, .2]} rotation={[Math.PI / 2, 0, 0]}>
                             <meshBasicMaterial color="red" />
                         </Cylinder>
-                        {/* https://github.com/jalvarez2016/This-world-is-too-tiny-for-both-of-us */}
                         <Image
                             scale={[.18, .18]}
                             rotation={[0, Math.PI, 0]}
                             url={Github}
                             transparent
                             position={[0, 0, -0.11]}
-                            onClick={() => window.open("https://github.com/jalvarez2016/This-world-is-too-tiny-for-both-of-us ", "_blank")}
+                            onClick={() => window.open( githubLink, "_blank")}
                         ></Image>
                     </group>
                     {/* <mesh position={[-1,1,-1]}>

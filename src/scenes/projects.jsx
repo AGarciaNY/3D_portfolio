@@ -7,6 +7,11 @@ import { useState } from "react"
 import { useFrame } from "@react-three/fiber"
 import { ProjectMapModel } from "../../public/Projects"
 
+
+//images
+import TWITTFBOU from '../assets/TWITTFBOU.png'
+import CatchTheApple from '../assets/CatchTheApple.png'
+import RollBaby from'../assets/RollBaby.png'
 export const Projects = ({ changeScene }) => {
     const dummyDunction = () => { console.log("dummy function") }
     const [interactFunction, setInteractFunction] = useState({ myfunction: dummyDunction })
@@ -27,8 +32,33 @@ export const Projects = ({ changeScene }) => {
 
             <Physics debug>
                 <Spaceship changeScene={changeScene} position={[0, 2, 20]} />
-                <group position={[-50, 1.5, -40]} rotation={[0,Math.PI,0]}>
+                <group position={[-50, .9, -40]} rotation={[0,Math.PI,0]}>
                     <ArcadeFunction
+                        image={TWITTFBOU}
+                        githubLink={"https://github.com/jalvarez2016/This-world-is-too-tiny-for-both-of-us"}
+                        liveLink={"https://jalvarez.itch.io/godot-44-web-build-test"}
+                        setInteractFunction={setInteractFunction}
+                        setCanPlayerMove={setCanPlayerMove}
+                        setCanPlayerCameraMove={setCanPlayerCameraMove}
+                        // img={}
+                    />
+                </group>
+                <group position={[-56, .9, -40]} rotation={[0,Math.PI,0]}>
+                    <ArcadeFunction
+                        image={CatchTheApple}
+                        githubLink={"https://github.com/khans8890/Catch_The_Apples"}
+                        liveLink={"https://khans8890.github.io/Catch_The_Apples/"}
+                        setInteractFunction={setInteractFunction}
+                        setCanPlayerMove={setCanPlayerMove}
+                        setCanPlayerCameraMove={setCanPlayerCameraMove}
+                        // img={}
+                    />
+                </group>
+                <group position={[-44, .9, -40]} rotation={[0,Math.PI,0]}>
+                    <ArcadeFunction
+                        image={RollBaby}
+                        githubLink={"https://github.com/jalvarez2016/GMTK2022"}
+                        liveLink={"https://jalvarez.itch.io/roll-baby"}
                         setInteractFunction={setInteractFunction}
                         setCanPlayerMove={setCanPlayerMove}
                         setCanPlayerCameraMove={setCanPlayerCameraMove}
@@ -46,7 +76,7 @@ export const Projects = ({ changeScene }) => {
                     shadow-bias={-0.00005}
                 />
 
-                <RigidBody type="fixed" name="floor" colliders="trimesh" scale={1.5} position={[-18,0.8,0]}>
+                <RigidBody type="fixed" name="floor" colliders="trimesh" scale={1.5} position={[-18,0,0]}>
                     <ProjectMapModel />
                 </RigidBody>
             </Physics>
