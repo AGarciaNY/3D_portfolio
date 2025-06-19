@@ -6,6 +6,7 @@ import { Station } from "../items/space_station"
 import { InsideSpaceshipModel } from "../../public/InsideSpaceship"
 import { useThree } from "@react-three/fiber"
 import { CubeTextureLoader } from "three"
+
 // CircleGeometry
 export const InSideSpaceship = ({ changeScene }) => {
     const SkyBox = () => {

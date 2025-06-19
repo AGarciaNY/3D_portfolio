@@ -22,8 +22,8 @@ export const Spaceship = ({ changeScene, position }) => {
                 <meshStandardMaterial color="blue" transparent opacity={0.5} />
                 <BallCollider args={[1, 1]} sensor={true} colliders={true} onIntersectionEnter={() => { goInsideSpaceShip() }} />
             </mesh>
-            <RigidBody type="fixed" position={[0, 0.3, -14]} rotation={[-Math.PI / 7, 0, 0]}>
-                <Box args={[2, .1, 8]} visible={true} >
+            <RigidBody type="fixed" position={[0, 0, -14]} rotation={[-Math.PI / 7, 0, 0]}>
+                <Box args={[2, .1, 8.5]} visible={true} >
                     <meshStandardMaterial color="blue" opacity={0.1} />
                 </Box>
             </RigidBody>

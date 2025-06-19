@@ -69,7 +69,7 @@ export const Projects = ({ changeScene }) => {
                 </group>
 
                 {/* web projects */}
-                <group rotation={[0, Math.PI, 0]} position={[-50,0,30]}>
+                <group rotation={[0, 0, 0]} position={[-50,0,30]}>
                     <Projectdisplay
                         image={RollBaby}
                         githubLink={"https://github.com/jalvarez2016/GMTK2022"}
@@ -80,7 +80,7 @@ export const Projects = ({ changeScene }) => {
                     />
                 </group>
 
-                <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove} />
+                <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove} position={[0,2,0]}/>
                 <ambientLight intensity={0.5} />
                 <directionalLight
                     intensity={0.65}

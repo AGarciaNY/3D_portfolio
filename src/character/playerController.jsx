@@ -32,8 +32,8 @@ export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = t
   const { WALK_SPEED, RUN_SPEED, ROTATION_SPEED } = useControls(
     "Character Control",
     {
-      WALK_SPEED: { value: 3, min: 0.1, max: 4, step: 0.1 },
-      RUN_SPEED: { value: 6, min: 0.2, max: 12, step: 0.1 },
+      WALK_SPEED: { value: 3, min: 0.1, max: 6, step: 0.1 },
+      RUN_SPEED: { value: 8, min: 0.2, max: 12, step: 0.1 },
       ROTATION_SPEED: {
         value: degToRad(3),
         min: degToRad(0.1),
@@ -151,7 +151,7 @@ export const PlayerController = ({ canPlayerMove = true, canPlayerCameraMove = t
       <group ref={container}>
         <group ref={cameraTarget} position-z={8} />
         <group ref={cameraPosition} position-y={4} position-z={-4} />
-        <group ref={character} position={[0,.5,0]}>
+        <group ref={character} position={[0,0,0]} scale={1.3}>
           <Character animation={animation}/>
         </group>
       </group>
