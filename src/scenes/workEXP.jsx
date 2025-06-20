@@ -3,7 +3,7 @@ import { Physics, RigidBody } from "@react-three/rapier"
 import { PlayerController } from "../character/playerController"
 import { Spaceship } from "../items/spaceship"
 import { TreeModel } from "../../public/Tree_1"
-
+import { WorkingplanetmapModel } from "../../public/Workingplanetmap"
 
 export const WorkEXP = ({ changeScene }) => {
     return (
@@ -24,7 +24,7 @@ export const WorkEXP = ({ changeScene }) => {
                 </group>
 
                 <Spaceship changeScene={changeScene} position={[0, 2, 20]} />
-                <PlayerController />
+                <PlayerController position={[0,2,0]}/>
                 <ambientLight intensity={0.5} />
                 <directionalLight
                     intensity={0.65}
@@ -36,10 +36,8 @@ export const WorkEXP = ({ changeScene }) => {
                 />
 
 
-                <RigidBody type="fixed" name="floor">
-                    <Box position={[0, 0, -75]} args={[50, 1, 200]} >
-                        <meshStandardMaterial color={"orange"} roughness={3} />
-                    </Box>
+                <RigidBody type="fixed" name="floor" colliders="trimesh"a>
+                    <WorkingplanetmapModel position={[-30,0,10]}/>
                 </RigidBody>
             </Physics>
 
