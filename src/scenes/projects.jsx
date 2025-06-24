@@ -79,6 +79,16 @@ export const Projects = ({ changeScene }) => {
                         setCanPlayerCameraMove={setCanPlayerCameraMove}
                     />
                 </group>
+                <group rotation={[0, 0, 0]} position={[-40,0,30]}>
+                    <Projectdisplay
+                        image={RollBaby}
+                        githubLink={"https://github.com/jalvarez2016/GMTK2022"}
+                        liveLink={"https://jalvarez.itch.io/roll-baby"}
+                        setInteractFunction={setInteractFunction}
+                        setCanPlayerMove={setCanPlayerMove}
+                        setCanPlayerCameraMove={setCanPlayerCameraMove}
+                    />
+                </group>
 
                 <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove} position={[0,2,0]}/>
                 <ambientLight intensity={0.5} />
