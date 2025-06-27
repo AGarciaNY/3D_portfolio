@@ -11,6 +11,7 @@ import { WorkEXP } from './scenes/workEXP';
 import { Projects } from './scenes/projects';
 import { ArtWork } from './scenes/artWork';
 import { Background } from './items/background';
+import LandingPage from './pages/landing-page';
 
 
 const keyboardMap = [
@@ -27,10 +28,12 @@ const keyboardMap = [
 export default function App() {
 
   const [currentScene, changeScene] = useState("spaceship")
+  const [portfolioVisibility, setPortfolioVisibility] = useState("block")
 
   return (
     <KeyboardControls map={keyboardMap}>
-      <Canvas>
+      {/* <LandingPage setPortfolioVisibility={setPortfolioVisibility} /> */}
+      <Canvas style={{display:portfolioVisibility}}>
         
 
         {/* <color attach="background" args={["blue"]}></color> */}

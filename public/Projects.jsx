@@ -14,6 +14,24 @@ export function ProjectMapModel(props) {
         <mesh geometry={nodes.Plane002_1.geometry} material={materials['Material.001']} />
         <mesh geometry={nodes.Plane002_2.geometry} material={materials['Material.002']} />
       </group>
+      <mesh geometry={nodes.Plane005.geometry} material={materials['Material.010']} position={[0, 1.131, 0]} />
+      <mesh geometry={nodes.Plane006.geometry} material={materials['Material.010']} position={[0, 1.131, 0]} />
+      <mesh geometry={nodes.Plane007.geometry} material={materials['Material.010']} position={[0, 1.131, 0]} />
+      <mesh geometry={nodes.Plane008.geometry} material={materials['Material.010']} position={[0, 1.131, 0]} />
+      <mesh geometry={nodes.Plane009.geometry} material={materials['Material.010']} position={[0, 1.131, 0]} />
+      <mesh geometry={nodes.Plane010.geometry} material={materials['Material.010']} position={[0, 1.131, 0]} />
+      <mesh geometry={nodes.Plane011.geometry} material={materials['Material.017']} position={[-14.574, 4.103, -16.593]} rotation={[1.585, -0.024, -0.544]} scale={0.34} />
+      <mesh geometry={nodes.Plane012.geometry} material={materials['Material.017']} position={[-14.156, 4.145, -16.845]} rotation={[1.585, -0.024, -0.544]} scale={0.34} />
+      <mesh geometry={nodes.Plane013.geometry} material={materials['Material.017']} position={[-13.657, 4.105, -17.148]} rotation={[1.585, -0.024, -0.544]} scale={0.34} />
+      <mesh geometry={nodes.Plane014.geometry} material={materials['Material.017']} position={[-12.464, 4.051, -18.242]} rotation={[1.568, -0.018, -0.796]} scale={0.34} />
+      <mesh geometry={nodes.Plane015.geometry} material={materials['Material.017']} position={[-12.464, 4.051, -18.242]} rotation={[Math.PI / 2, 0, -0.853]} scale={0.34} />
+      <mesh geometry={nodes.Plane016.geometry} material={materials['Material.017']} position={[-12.464, 4.051, -18.242]} rotation={[Math.PI / 2, 0, -0.853]} scale={0.34} />
+      <mesh geometry={nodes.Plane017.geometry} material={materials['Material.017']} position={[-12.464, 4.051, -18.242]} rotation={[Math.PI / 2, 0, -0.853]} scale={0.34} />
+      <mesh geometry={nodes.Plane018.geometry} material={materials['Material.017']} position={[-11.708, 4.085, -19.144]} rotation={[Math.PI / 2, 0, -1.113]} scale={0.34} />
+      <mesh geometry={nodes.Plane019.geometry} material={materials['Material.017']} position={[-11.535, 4.064, -19.494]} rotation={[Math.PI / 2, 0, -1.113]} scale={0.34} />
+      <mesh geometry={nodes.Plane021.geometry} material={materials['Material.017']} position={[-11.33, 4.2, -19.91]} rotation={[Math.PI / 2, 0, -1.113]} scale={0.34} />
+      <mesh geometry={nodes.Plane022.geometry} material={materials['Material.017']} position={[-11.144, 4.087, -20.288]} rotation={[Math.PI / 2, 0, -1.113]} scale={0.34} />
+      <mesh geometry={nodes.Plane029.geometry} material={materials['Material.017']} position={[-20.921, 3.876, 8.377]} rotation={[Math.PI / 2, 0, -2.918]} scale={0.744} />
       <mesh geometry={nodes.Plane_1.geometry} material={materials['Material.003']} />
       <mesh geometry={nodes.Plane_2.geometry} material={materials['Material.004']} />
       <mesh geometry={nodes.Plane_3.geometry} material={materials['Material.005']} />
@@ -22,9 +40,8 @@ export function ProjectMapModel(props) {
       <mesh geometry={nodes.Plane_6.geometry} material={materials['Material.007']} />
       <mesh geometry={nodes.Plane_7.geometry} material={materials['Material.008']} />
       <mesh geometry={nodes.Plane_8.geometry} material={materials['Material.009']} />
-      <mesh geometry={nodes.Plane_9.geometry} material={materials['Material.010']} />
-      <mesh geometry={nodes.Plane_10.geometry} material={materials['Material.011']} />
-      <mesh geometry={nodes.Plane_11.geometry} material={materials['Material.012']} />
+      <mesh geometry={nodes.Plane_9.geometry} material={materials['Material.011']} />
+      <mesh geometry={nodes.Plane_10.geometry} material={materials['Material.012']} />
     </group>
   )
 }

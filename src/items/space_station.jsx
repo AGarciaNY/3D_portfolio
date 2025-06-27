@@ -113,17 +113,17 @@ export const Station = ({ setDestination }) => {
             </Sphere>
 
             <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetOne} rotation={[0, Math.PI / 8, Math.PI / 20]}>
-                <Tag name={"About"} position={[1, .7, 0]} boxSize={[.8, .3, .01]} refHere={sign1} />
+                <Tag name={"About coming soon"} position={[1, .7, 0]} boxSize={[.8, .3, .01]} refHere={sign1} />
                 <Planet1Model setDestination={setDestination} />
             </RigidBody>
 
             <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetTwo} rotation={[0, -Math.PI / 2, Math.PI / 15]}>
-                <Tag name={"Work EXP"} position={[1.5, .7, 0]} boxSize={[1.1, .3, .01]} refHere={sign2} />
+                <Tag name={"Work EXP coming soon"} position={[1.5, .7, 0]} boxSize={[1.1, .3, .01]} refHere={sign2} />
                 <Planet2Model setDestination={setDestination} />
             </RigidBody>
 
             <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetThree} rotation={[Math.PI / 10, -Math.PI / 1.2, Math.PI / 10]}>
-                <Tag name={"Art Work"} position={[2.4, .7, 0]} boxSize={[1, .3, .01]} refHere={sign3} />
+                <Tag name={"Art Work coming soon"} position={[2.4, .7, 0]} boxSize={[1, .3, .01]} refHere={sign3} />
                 <Planet3Model setDestination={setDestination} />
             </RigidBody>
             <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetFour} rotation={[0, Math.PI, Math.PI / 18]}>
