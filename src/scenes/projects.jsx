@@ -118,10 +118,6 @@ export const Projects = ({ changeScene }) => {
                     shadow-mapSize-height={2048}
                     shadow-bias={-0.00005}
                 />
-                <mesh >
-                    <boxGeometry args={[1, 1, 1]} />
-                    <meshStandardMaterial transparent opacity={0.5} color="purple" emissive="purple" emissiveIntensity={5}/>
-                </mesh>
                 {/* <NionLightModel/> */}
                 <RigidBody type="fixed" name="floor" colliders="trimesh" scale={1.5} position={[-18, 0, 0]}>
                     <ProjectMapModel />
