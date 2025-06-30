@@ -32,7 +32,7 @@ export const InSideSpaceship = ({ changeScene }) => {
     return (
         <>
             <color attach="background" args={["black"]} />
-            <ambientLight intensity={0.5} />
+            <ambientLight intensity={1} />
             <directionalLight
                 intensity={0.65}
                 castShadow
@@ -60,7 +60,7 @@ export const InSideSpaceship = ({ changeScene }) => {
                 <group position={[0, 5, 11]} rotation={[0, 0, 0]}>
 
                     <mesh onClick={() => {
-                        if (destination !== "" && destination !== "Cant go here")
+                        if (destination !== "" && destination !== "Cant go here" && destination !== "coming soon")
                             changeScene(destination)
                         }}
                         position={[2.52, -1, -.18]}

@@ -26,22 +26,24 @@ export function ProjectMapModel(props) {
       <mesh geometry={nodes.Plane014.geometry} material={materials['Material.017']} position={[-12.464, 4.051, -18.242]} rotation={[1.568, -0.018, -0.796]} scale={0.34} />
       <mesh geometry={nodes.Plane015.geometry} material={materials['Material.017']} position={[-12.464, 4.051, -18.242]} rotation={[Math.PI / 2, 0, -0.853]} scale={0.34} />
       <mesh geometry={nodes.Plane016.geometry} material={materials['Material.017']} position={[-12.464, 4.051, -18.242]} rotation={[Math.PI / 2, 0, -0.853]} scale={0.34} />
-      <mesh geometry={nodes.Plane017.geometry} material={materials['Material.017']} position={[-12.464, 4.051, -18.242]} rotation={[Math.PI / 2, 0, -0.853]} scale={0.34} />
+      <group position={[-12.464, 4.051, -18.242]} rotation={[Math.PI / 2, 0, -0.853]} scale={0.34}>
+        <mesh geometry={nodes.Plane028.geometry} material={materials['Material.005']} />
+        <mesh geometry={nodes.Plane028_1.geometry} material={materials['Material.017']} />
+      </group>
       <mesh geometry={nodes.Plane018.geometry} material={materials['Material.017']} position={[-11.708, 4.085, -19.144]} rotation={[Math.PI / 2, 0, -1.113]} scale={0.34} />
       <mesh geometry={nodes.Plane019.geometry} material={materials['Material.017']} position={[-11.535, 4.064, -19.494]} rotation={[Math.PI / 2, 0, -1.113]} scale={0.34} />
       <mesh geometry={nodes.Plane021.geometry} material={materials['Material.017']} position={[-11.33, 4.2, -19.91]} rotation={[Math.PI / 2, 0, -1.113]} scale={0.34} />
       <mesh geometry={nodes.Plane022.geometry} material={materials['Material.017']} position={[-11.144, 4.087, -20.288]} rotation={[Math.PI / 2, 0, -1.113]} scale={0.34} />
-      <mesh geometry={nodes.Plane029.geometry} material={materials['Material.017']} position={[-20.921, 3.876, 8.377]} rotation={[Math.PI / 2, 0, -2.918]} scale={0.744} />
+      <group position={[-20.921, 3.876, 8.377]} rotation={[Math.PI / 2, 0, -2.918]} scale={0.744}>
+        <mesh geometry={nodes.Plane039.geometry} material={materials['Material.005']} />
+        <mesh geometry={nodes.Plane039_1.geometry} material={materials['Material.017']} />
+      </group>
       <mesh geometry={nodes.Plane_1.geometry} material={materials['Material.003']} />
       <mesh geometry={nodes.Plane_2.geometry} material={materials['Material.004']} />
       <mesh geometry={nodes.Plane_3.geometry} material={materials['Material.005']} />
       <mesh geometry={nodes.Plane_4.geometry} material={materials.glass} />
-      <mesh geometry={nodes.Plane_5.geometry} material={materials['Material.006']} />
-      <mesh geometry={nodes.Plane_6.geometry} material={materials['Material.007']} />
-      <mesh geometry={nodes.Plane_7.geometry} material={materials['Material.008']} />
-      <mesh geometry={nodes.Plane_8.geometry} material={materials['Material.009']} />
-      <mesh geometry={nodes.Plane_9.geometry} material={materials['Material.011']} />
-      <mesh geometry={nodes.Plane_10.geometry} material={materials['Material.012']} />
+      <mesh geometry={nodes.Plane_5.geometry} material={materials['Material.011']} />
+      <mesh geometry={nodes.Plane_6.geometry} material={materials['Material.012']} />
     </group>
   )
 }

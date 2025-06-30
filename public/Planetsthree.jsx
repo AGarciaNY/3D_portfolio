@@ -11,7 +11,7 @@ export function Planet3Model({setDestination,...props}) {
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Sphere001.geometry} material={materials.green} position={[2.334, 0, 0]} scale={3.478}
-        onClick={() => { setDestination("art work") }}
+        onClick={() => { setDestination("coming soon") }}
       />
       <mesh geometry={nodes.BézierCircle001.geometry} colliders={false} material={materials['Material.001']} />
     </group>

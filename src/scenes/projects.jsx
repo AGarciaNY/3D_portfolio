@@ -1,4 +1,4 @@
-import { Box, useKeyboardControls } from "@react-three/drei"
+import { Box, Image, useKeyboardControls } from "@react-three/drei"
 import { Physics, RigidBody } from "@react-three/rapier"
 import { PlayerController } from "../character/playerController"
 import { Spaceship } from "../items/spaceship"
@@ -6,13 +6,14 @@ import { ArcadeFunction } from "../items/arcade/Arcade_Function"
 import { useState } from "react"
 import { useFrame } from "@react-three/fiber"
 import { ProjectMapModel } from "../../public/Projects"
-
-
+import cautionjune4 from '../assets/cautionjune4.png'
+import { NionLightModel } from "../../public/NioLight"
 //images
 import TWITTFBOU from '../assets/TWITTFBOU.png'
 import CatchTheApple from '../assets/CatchTheApple.png'
 import RollBaby from '../assets/RollBaby.png'
 import { Projectdisplay } from "../items/project_display"
+import { WorinkingSignModel } from "../../public/Working_sign"
 export const Projects = ({ changeScene }) => {
     const dummyDunction = () => { console.log("dummy function") }
     const [interactFunction, setInteractFunction] = useState({ myfunction: dummyDunction })
@@ -31,7 +32,7 @@ export const Projects = ({ changeScene }) => {
     return (
         <>
 
-            <Physics debug>
+            <Physics>
                 <Spaceship changeScene={changeScene} position={[0, 2, 20]} />
                 {/* game projects */}
                 <group position={[-50, .9, -40]} rotation={[0, Math.PI, 0]}>
@@ -69,7 +70,7 @@ export const Projects = ({ changeScene }) => {
                 </group>
 
                 {/* web projects */}
-                <group rotation={[0, 0, 0]} position={[-50,0,30]}>
+                <group rotation={[0, 0, 0]} position={[-50, 0, 30]}>
                     <Projectdisplay
                         image={RollBaby}
                         githubLink={"https://github.com/jalvarez2016/GMTK2022"}
@@ -79,7 +80,7 @@ export const Projects = ({ changeScene }) => {
                         setCanPlayerCameraMove={setCanPlayerCameraMove}
                     />
                 </group>
-                <group rotation={[0, 0, 0]} position={[-40,0,30]}>
+                <group rotation={[0, 0, 0]} position={[-40, 0, 30]}>
                     <Projectdisplay
                         image={RollBaby}
                         githubLink={"https://github.com/jalvarez2016/GMTK2022"}
@@ -90,19 +91,41 @@ export const Projects = ({ changeScene }) => {
                     />
                 </group>
 
-                <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove} position={[0,2,0]}/>
-                <ambientLight intensity={0.5} />
+                {/* under renovation */}
+                <RigidBody position={[-50, 0, 13]} type="fixed">
+                    <WorinkingSignModel position={[4, 0, 2]} rotation={[0, -Math.PI / 6, 0]} />
+                    <WorinkingSignModel position={[2, 0, 1]} rotation={[0, -Math.PI / 9, 0]} />
+                    <WorinkingSignModel position={[-4.5, 0, 2]} rotation={[0, Math.PI / 6, 0]} />
+                    <WorinkingSignModel position={[-2, 0, 1]} rotation={[0, Math.PI / 9, 0]} />
+                    <WorinkingSignModel position={[0, 0, .4]} />
+
+                    <Image
+                        scale={[4, 2.7]}
+                        rotation={[0, Math.PI, 0]}
+                        url={cautionjune4}
+                        transparent
+                        position={[0, 3, 0]}
+                        onClick={() => window.open(githubLink, "_blank")}
+                    />
+                </RigidBody>
+                <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove} position={[0, 2, 0]} />
+                <ambientLight intensity={2} />
                 <directionalLight
-                    intensity={0.65}
+                    intensity={3}
                     castShadow
-                    position={[-15, 10, 15]}
+                    position={[0, 30, 0]}
                     shadow-mapSize-width={2048}
                     shadow-mapSize-height={2048}
                     shadow-bias={-0.00005}
                 />
-
+                <mesh >
+                    <boxGeometry args={[1, 1, 1]} />
+                    <meshStandardMaterial transparent opacity={0.5} color="purple" emissive="purple" emissiveIntensity={5}/>
+                </mesh>
+                {/* <NionLightModel/> */}
                 <RigidBody type="fixed" name="floor" colliders="trimesh" scale={1.5} position={[-18, 0, 0]}>
                     <ProjectMapModel />
+                    <NionLightModel/>
                 </RigidBody>
             </Physics>
 

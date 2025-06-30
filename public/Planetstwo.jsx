@@ -11,7 +11,7 @@ export function Planet2Model({setDestination,...props}) {
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Sphere002.geometry} material={materials.workExp} position={[1.5, 0, 0]} scale={2.581}
-        onClick={()=>{setDestination("workEXP")}}
+        onClick={()=>{setDestination("coming soon")}}
       />
       <mesh geometry={nodes.BézierCircle.geometry} colliders={false} material={materials['Material.002']} />
     </group>

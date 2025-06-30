@@ -6,7 +6,7 @@ import { Spaceship } from "../items/spaceship"
 export const AboutMe = ({changeScene}) => {
     return (
         <>
-            <Physics debug>
+            <Physics>
                 <Spaceship changeScene={changeScene} position={[4,1,4]}/>
 
                 <PlayerController />

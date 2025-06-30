@@ -45,7 +45,7 @@ export default function TestWorld({ changeScene }) {
                 />
             </directionalLight>
 
-            <Physics debug>
+            <Physics>
 
                 <PlayerController canPlayerMove={canPlayerMove} canPlayerCameraMove={canPlayerCameraMove} />
                 {/* <RigidBody type="fixed" colliders={false} > */}

@@ -8,7 +8,7 @@ import { WorkingplanetmapModel } from "../../public/Workingplanetmap"
 export const WorkEXP = ({ changeScene }) => {
     return (
         <>  
-            <Physics debug>
+            <Physics>
                 {/* trees */}
                 <group>
                     <RigidBody type="fixed">

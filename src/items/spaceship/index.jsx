@@ -17,11 +17,12 @@ export const Spaceship = ({ changeScene, position }) => {
                 <SpaceshipModel position={[0, -1.5, 0]} animation={currentAnimation} />
             </mesh>
             <mesh position={[0, 2, -12]}>
-                <boxGeometry args={[2, 2, 2]}>
+                <boxGeometry args={[2, 4, 5]}>
                 </boxGeometry>
                 <meshStandardMaterial color="blue" transparent opacity={0.5} />
-                <BallCollider args={[1, 1]} sensor={true} colliders={true} onIntersectionEnter={() => { goInsideSpaceShip() }} />
+
             </mesh>
+            <BallCollider position={[0, 2, -14]} args={[1, 1]} sensor={true} colliders={true} onIntersectionEnter={() => { goInsideSpaceShip() }} />
             <RigidBody type="fixed" position={[0, 0, -14]} rotation={[-Math.PI / 7, 0, 0]}>
                 <Box args={[2, .1, 8.5]} visible={true} >
                     <meshStandardMaterial color="blue" opacity={0.1} />
