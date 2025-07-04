@@ -113,7 +113,7 @@ export const Projects = ({ changeScene }) => {
                 <directionalLight
                     intensity={3}
                     castShadow
-                    position={[0, 30, 0]}
+                    position={[0, 30, 1]}
                     shadow-mapSize-width={2048}
                     shadow-mapSize-height={2048}
                     shadow-bias={-0.00005}
