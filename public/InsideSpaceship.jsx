@@ -11,18 +11,12 @@ export function InsideSpaceshipModel(props) {
   return (
     <group {...props} dispose={null}>
       <group position={[0, -7.116, 13.091]} scale={7.011}>
-        <mesh geometry={nodes.Plane007_1.geometry} material={materials.walls} />
-        <mesh geometry={nodes.Plane007_2.geometry} material={materials.glass} />
-        <mesh geometry={nodes.Plane007_3.geometry} material={materials.spacefloor} />
-        <mesh geometry={nodes.Plane007_4.geometry} material={materials.gray} />
-        <mesh geometry={nodes.Plane007_5.geometry} material={materials['Material.001']} />
-        <mesh geometry={nodes.Plane007_6.geometry} material={materials['Material.005']} />
-      </group>
-      <group position={[-0.422, 2.623, 19.069]}>
-        <mesh geometry={nodes.Plane008_1.geometry} material={materials.walls} />
-        <mesh geometry={nodes.Plane008_2.geometry} material={materials['Material.002']} />
-        <mesh geometry={nodes.Plane008_3.geometry} material={materials.spacefloor} />
-        <mesh geometry={nodes.Plane008_4.geometry} material={materials['Material.012']} />
+        <mesh geometry={nodes.Plane007.geometry} material={materials.walls} />
+        <mesh geometry={nodes.Plane007_1.geometry} material={materials.glass} />
+        <mesh geometry={nodes.Plane007_2.geometry} material={materials.spacefloor} />
+        <mesh geometry={nodes.Plane007_3.geometry} material={materials.gray} />
+        <mesh geometry={nodes.Plane007_4.geometry} material={materials['Material.001']} />
+        <mesh geometry={nodes.Plane007_5.geometry} material={materials['Material.005']} />
       </group>
       <group position={[0, 3.577, 22.933]}>
         <mesh geometry={nodes.Plane009_1.geometry} material={materials.gray} />
@@ -34,12 +28,8 @@ export function InsideSpaceshipModel(props) {
         <mesh geometry={nodes.Plane011_2.geometry} material={materials.walls} />
       </group>
       <group position={[18.521, 3.998, 11.027]} rotation={[0, 1.178, 0]}>
-        <mesh geometry={nodes.Plane010_1.geometry} material={materials.gray} />
-        <mesh geometry={nodes.Plane010_2.geometry} material={materials['Material.011']} />
-      </group>
-      <group position={[-16.985, 3.577, 9.956]} rotation={[0, -1.508, 0]}>
-        <mesh geometry={nodes.Plane012.geometry} material={materials.gray} />
-        <mesh geometry={nodes.Plane012_1.geometry} material={materials['Material.011']} />
+        <mesh geometry={nodes.Plane010.geometry} material={materials.gray} />
+        <mesh geometry={nodes.Plane010_1.geometry} material={materials['Material.011']} />
       </group>
     </group>
   )
