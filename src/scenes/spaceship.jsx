@@ -6,7 +6,8 @@ import { Station } from "../items/space_station"
 import { InsideSpaceshipModel } from "../../public/InsideSpaceship"
 import { useThree } from "@react-three/fiber"
 import { CubeTextureLoader } from "three"
-
+import sky from '../assets/sky.jpg'
+import { ChairModel } from "../../public/Spaceship-chair"
 // CircleGeometry
 export const InSideSpaceship = ({ changeScene }) => {
     const SkyBox = () => {
@@ -15,12 +16,12 @@ export const InSideSpaceship = ({ changeScene }) => {
         const loader = new CubeTextureLoader();
         // The CubeTextureLoader load method takes an array of urls representing all 6 sides of the cube.
         const texture = loader.load([
-            "/1.jpg",
-            "/1.jpg",
-            "/1.jpg",
-            "/1.jpg",
-            "/1.jpg",
-            "/1.jpg",
+            sky,
+            sky,
+            sky,
+            sky,
+            sky,
+            sky
         ]);
 
         // Set the scene background property to the resulting texture.
@@ -41,12 +42,6 @@ export const InSideSpaceship = ({ changeScene }) => {
                 shadow-mapSize-height={2048}
                 shadow-bias={-0.00005}
             >
-                {/* <OrthographicCamera
-                    left={-22}
-                    right={15}
-                    top={10}
-                    bottom={-20}
-                /> */}
                 <SkyBox />
             </directionalLight>
 
@@ -97,6 +92,7 @@ export const InSideSpaceship = ({ changeScene }) => {
                         <meshBasicMaterial color={"green"} roughness={3} />
                     </Box> */}
                     <InsideSpaceshipModel />
+                    <ChairModel/>
                 </RigidBody>
             </Physics>
 

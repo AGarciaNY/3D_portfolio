@@ -9,7 +9,7 @@ import { Vector3 } from "three";
 import Github from '../assets/Github.png'
 // src/items/arcade/Arcade_Function.jsx
 
-export const Projectdisplay = ({ setInteractFunction, setCanPlayerMove, setCanPlayerCameraMove,image,githubLink,liveLink}) => {
+export const Projectdisplay = ({ setInteractFunction, setCanPlayerMove, setCanPlayerCameraMove, image, githubLink, liveLink }) => {
     const { camera } = useThree();
     const EPressRef = useRef()
     const [ePressVisible, setEPressVisible] = useState(false)
@@ -81,10 +81,10 @@ export const Projectdisplay = ({ setInteractFunction, setCanPlayerMove, setCanPl
                 <group ref={cameraTarget} position-z={3} />
                 <group ref={cameraPosition} position-y={2.3} position-z={0} />
                 <group ref={board}>
-                    <ProjectdisplayModel rotation={[0, Math.PI, 0]} position={[0, 0, 0]} scale={1.5}/>
+                    <ProjectdisplayModel rotation={[0, Math.PI, 0]} position={[0, -.25, -.05]} scale={[1.9,1.7,1.7]} />
                     <Text
-                        rotation={[Math.PI /6.5, Math.PI, 0]}
-                        color="white"
+                        rotation={[Math.PI / 6.5, Math.PI, 0]}
+                        color="black"
                         fontSize={.05}
                         position={[-.3, 2.25, .55]}
                         onClick={() => {
@@ -95,31 +95,34 @@ export const Projectdisplay = ({ setInteractFunction, setCanPlayerMove, setCanPl
                         ESC
                     </Text>
 
-                    <Image scale={[1, .6]} rotation={[Math.PI / 6.5, Math.PI, 0]} position={[0, 2, .52]} url={image} ></Image>
+                    <Image scale={[.98, .6]} rotation={[Math.PI / 6.89, Math.PI, 0]} position={[0.01, 2, .557]} url={image} ></Image>
                     {/* <Sphere args={[.2,7]} position={[-.8,1.8,0]}/> */}
-                    <Cylinder args={[.1, .1, .2]} rotation={[Math.PI / 2, 0, 0]} position={[-.8, 1.8, -0.01]}>
-                        <meshBasicMaterial color="red" />
-                        <Text
-                            rotation={[-Math.PI / 2, Math.PI, 0]}
-                            color="white"
-                            fontSize={.07}
-                            position={[.07, -.2, -0.05]}
-                            onClick={() => window.open(liveLink, "_blank")}
-                        >
-                            play
-                        </Text>
-                    </Cylinder>
-                    <group position={[-.37, 1.8, -0.01]}>
-                        <Cylinder args={[.1, .1, .2]} rotation={[Math.PI / 2, 0, 0]}>
+                    <group position={[.2, 1.8, .45]} rotation={[Math.PI / 6.89, 0, 0]}>
+                        <Cylinder args={[.05, .05, .01]} rotation={[Math.PI / 2, 0, 0]}>
+                            <meshBasicMaterial color="red" />
+                            <Text
+                                rotation={[-Math.PI / 2, Math.PI, 0]}
+                                color="white"
+                                fontSize={.04}
+                                position={[0, -0.006, -0.007]}
+                                onClick={() => window.open(liveLink, "_blank")}
+                            >
+                                Live
+                            </Text>
+                        </Cylinder>
+                    </group>
+
+                    <group position={[.4, 1.8, .45]} rotation={[Math.PI / 6.89, 0, 0]}>
+                        <Cylinder args={[.05, .05, .01]} rotation={[Math.PI / 2, 0, 0]}>
                             <meshBasicMaterial color="red" />
                         </Cylinder>
                         <Image
-                            scale={[.18, .18]}
+                            scale={[.1, .1]}
                             rotation={[0, Math.PI, 0]}
                             url={Github}
                             transparent
-                            position={[0, 0, -0.11]}
-                            onClick={() => window.open( githubLink, "_blank")}
+                            position={[0, 0, -0.007]}
+                            onClick={() => window.open(githubLink, "_blank")}
                         ></Image>
                     </group>
                     {/* <mesh position={[-1,1,-1]}>
