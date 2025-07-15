@@ -113,7 +113,7 @@ export const Station = ({ setDestination }) => {
             </Sphere>
 
             <RigidBody type="kinematicPosition" position={[0, 0.75, 0]} ref={planetOne} rotation={[0, Math.PI / 8, Math.PI / 20]}>
-                <Tag name={"About coming soon"} position={[1, .7, 0]} boxSize={[2.2, .3, .01]} refHere={sign1} />
+                <Tag name={"About"} position={[1, .7, 0]} boxSize={[2.2, .3, .01]} refHere={sign1} />
                 <Planet1Model setDestination={setDestination} />
             </RigidBody>
 

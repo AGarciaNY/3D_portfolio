@@ -2,6 +2,7 @@ import { Box } from "@react-three/drei"
 import { Physics, RigidBody } from "@react-three/rapier"
 import { PlayerController } from "../character/playerController"
 import { Spaceship } from "../items/spaceship"
+import { SchoolModel } from "../../public/TechSchool"
 
 export const AboutMe = ({changeScene}) => {
     return (
@@ -10,6 +11,7 @@ export const AboutMe = ({changeScene}) => {
                 <Spaceship changeScene={changeScene} position={[4,1,4]}/>
 
                 <PlayerController />
+                <SchoolModel/>
                <ambientLight intensity={0.5} />
                            <directionalLight
                                intensity={0.65}
